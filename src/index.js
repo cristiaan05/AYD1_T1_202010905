@@ -13,13 +13,16 @@ app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
+app.get('/ver-info', (req, res) => {
+    res.json({ nombre: "Tu Nombre", carnet: "Tu Carnet" });
+});
 let canciones = [];
 
-app.post('/agregar-cancion', (req, res) => {
     const { nombre, artista, album } = req.body;
-    if (!nombre || !artista || !album) {
-        return res.status(400).json({ mensaje: 'Faltan datos' });
+app.post('/agregar-cancion', (req, res) => {
     }
+        return res.status(400).json({ mensaje: 'Faltan datos' });
+    if (!nombre || !artista || !album) {
     const nuevaCancion = { nombre, artista, album };
     canciones.push(nuevaCancion);
     res.status(201).json({ mensaje: 'Canción agregada', nuevaCancion });
