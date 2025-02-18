@@ -14,16 +14,16 @@ app.listen(PORT, () => {
 });
 
 app.get('/ver-info', (req, res) => {
-    res.json({ nombre: "Tu Nombre", carnet: "Tu Carnet" });
+    res.json({ nombre: "Cristian Fernando Hernandez Tello", carnet: "202010905" });
 });
 let canciones = [];
 
 app.post('/agregar-cancion', (req, res) => {
-    const { nombre, artista, album } = req.body;
-    if (!nombre || !artista || !album) {
+    const { nombre, artista, genero } = req.body;
+    if (!nombre || !artista || !genero) {
         return res.status(400).json({ mensaje: 'Faltan datos' });
     }
-    const nuevaCancion = { nombre, artista, album };
+    const nuevaCancion = { nombre, artista, genero };
     canciones.push(nuevaCancion);
     res.status(201).json({ mensaje: 'Canción agregada', nuevaCancion });
 });
